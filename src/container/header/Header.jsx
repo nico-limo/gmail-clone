@@ -24,7 +24,7 @@ const Header = () => {
 
       <div className="header__middle">
         <SearchIcon/>
-        <input type="text" placeholder="Search mail"/>
+        <input type="text" placeholder="Buscar correo"/>
         <ArrowDropDown className="header__inputCaret" />
       </div>
 
