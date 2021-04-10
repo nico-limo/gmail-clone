@@ -14,14 +14,12 @@
     font-weight: 300;
 }
 
-.sidebarOption:hover,
-.sidebarOption:hover > p,
-.sidebarOption:hover > h3,
+
 .sidebarOption--active,
 .sidebarOption--active > p,
 .sidebarOption--active > h3 {
-    background-color: #fcecec;
-    color: #c04b37;
+    background-color: #fcecec !important;
+    color: #c04b37 !important;
     font-weight: 800 !important;
 }
 

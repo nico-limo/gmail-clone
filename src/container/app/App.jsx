@@ -4,6 +4,8 @@ import './App.css';
 //Components
 import Header from "../header/Header";
 import Sidebar from '../sidebar/Sidebar';
+import Mail from "../mail/Mail";
+import EmailList from "../emailList/EmailList";
 //React Router dom
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
@@ -20,7 +22,7 @@ function App() {
           <Mail/>
         </Route>
         <Route path="/">
-          <EailList/>
+          <EmailList/>
         </Route>
       </Switch>
       </div>
