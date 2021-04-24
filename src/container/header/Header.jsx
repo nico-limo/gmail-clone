@@ -11,17 +11,16 @@ import { ArrowDropDown } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../redux/reducers/userSlice";
 import { auth } from "../../fbConfig";
-
+import { useHistory } from "react-router-dom";
 const Header = () => {
   const user = useSelector(selectUser);
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
+  const history = useHistory();
   const signOut = () => {
     auth.signOut().then(() => {
-      dispatch(logout())
-
-    })
-  }
+      dispatch(logout());
+    });
+  };
 
   return (
     <div className="header">
@@ -32,6 +31,7 @@ const Header = () => {
         <img
           src="https://logodownload.org/wp-content/uploads/2018/03/gmail-logo-3-1.png"
           alt=""
+          onClick={() => history.push("/")}
         />
       </div>
 

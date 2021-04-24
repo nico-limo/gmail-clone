@@ -19,26 +19,30 @@ import PhoneIcon from "@material-ui/icons/Phone";
 //Redux
 import { useDispatch } from "react-redux";
 import { openSendMessage } from "../../redux/reducers/mailSlice";
-
+import { useHistory } from "react-router-dom";
 const Sidebar = () => {
   const iconAdd = () => <AddIcon fontSize="large" />;
   const dispatch = useDispatch();
-
+  const history = useHistory();
   return (
     <div className="sidebar">
-      <Button 
-      onClick={()=> dispatch(openSendMessage())}
-      className="sidebar__compose" 
-      startIcon={iconAdd()}>
+      <Button
+        onClick={() => dispatch(openSendMessage())}
+        className="sidebar__compose"
+        startIcon={iconAdd()}
+      >
         Redactar
       </Button>
 
-      <SidebarOption
-        Icon={InboxIcon}
-        title="Recibidos"
-        number={54}
-        selected={true}
-      />
+      <div onClick={()=> history.push("/")}>
+        <SidebarOption
+          Icon={InboxIcon}
+          title="Recibidos"
+          number={54}
+          selected={true}
+        />
+      </div>
+
       <SidebarOption Icon={StarIcon} title="Destacados" number={54} />
       <SidebarOption Icon={AccessTimeIcon} title="Pospuestos" number={54} />
       <SidebarOption
