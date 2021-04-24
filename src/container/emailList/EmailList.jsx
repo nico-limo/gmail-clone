@@ -17,6 +17,7 @@ import {
 } from "@material-ui/icons";
 //Components
 import Section from "../../components/section/Section";
+import EmailRow from "../../components/emailRow/EmailRow";
 
 const EmailList = () => {
   return (
@@ -55,8 +56,8 @@ const EmailList = () => {
         <Section Icon={LocalOffer} title="Promociones" color="green"/>
       </div>
       <div className="emailList__list">
-        <h2>GMAIL CLONE EN PROGRESO</h2>
-        <h3>BY Nico Limonoff</h3>
+       <EmailRow title="La mejor Clone Web" subject="Hecho por Nico" description="Lorem ipsum" time="10pm" />
+       <EmailRow title="Google Interview" subject="Trabaja con nosotros" description="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum" time="9am" />
       </div>
     </div>
   );

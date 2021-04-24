@@ -1,5 +1,4 @@
 .emailList {
-    background-color: lightblue;
     flex: 1;
     overflow: scroll;
 }
