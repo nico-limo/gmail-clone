@@ -16,38 +16,53 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PersonIcon from "@material-ui/icons/Person";
 import DuoIcon from "@material-ui/icons/Duo";
 import PhoneIcon from "@material-ui/icons/Phone";
+//Redux
+import { useDispatch } from "react-redux";
+import { openSendMessage } from "../../redux/reducers/mailSlice";
 
 const Sidebar = () => {
   const iconAdd = () => <AddIcon fontSize="large" />;
+  const dispatch = useDispatch();
 
   return (
     <div className="sidebar">
-      <Button className="sidebar__compose" startIcon={iconAdd()}>
+      <Button 
+      onClick={()=> dispatch(openSendMessage())}
+      className="sidebar__compose" 
+      startIcon={iconAdd()}>
         Redactar
       </Button>
 
-    <SidebarOption Icon={InboxIcon} title="Recibidos" number={54} selected={true} />
-    <SidebarOption Icon={StarIcon} title="Destacados" number={54} />
-    <SidebarOption Icon={AccessTimeIcon} title="Pospuestos" number={54} />
-    <SidebarOption Icon={LabelImportantIcon} title="Importantes" number={54} />
-    <SidebarOption Icon={NearMeIcon} title="Enviados" number={54} />
-    <SidebarOption Icon={NoteIcon} title="Borradores" number={54} />
-    <SidebarOption Icon={ExpandMoreIcon} title="Más" number={54} />
+      <SidebarOption
+        Icon={InboxIcon}
+        title="Recibidos"
+        number={54}
+        selected={true}
+      />
+      <SidebarOption Icon={StarIcon} title="Destacados" number={54} />
+      <SidebarOption Icon={AccessTimeIcon} title="Pospuestos" number={54} />
+      <SidebarOption
+        Icon={LabelImportantIcon}
+        title="Importantes"
+        number={54}
+      />
+      <SidebarOption Icon={NearMeIcon} title="Enviados" number={54} />
+      <SidebarOption Icon={NoteIcon} title="Borradores" number={54} />
+      <SidebarOption Icon={ExpandMoreIcon} title="Más" number={54} />
 
-    <div className="sidebar__footer">
-      <div className="sidebar__footerIcons">
-        <IconButton>
-          <PersonIcon />
-        </IconButton>
-        <IconButton>
-          <DuoIcon />
-        </IconButton>
-        <IconButton>
-          <PhoneIcon />
-        </IconButton>
+      <div className="sidebar__footer">
+        <div className="sidebar__footerIcons">
+          <IconButton>
+            <PersonIcon />
+          </IconButton>
+          <IconButton>
+            <DuoIcon />
+          </IconButton>
+          <IconButton>
+            <PhoneIcon />
+          </IconButton>
+        </div>
       </div>
-    </div>
-
     </div>
   );
 };
