@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 //CSS
 import "./EmailList.css";
 //Material UI
@@ -18,8 +18,24 @@ import {
 //Components
 import Section from "../../components/section/Section";
 import EmailRow from "../../components/emailRow/EmailRow";
+import { db } from "../../fbConfig";
+import { set } from "react-hook-form";
 
 const EmailList = () => {
+  const [emails, setEmails] = useState([]);
+
+  useEffect(() => {
+    db.collection("emails")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
   return (
     <div className="emailList">
       <div className="emailList__settings">
@@ -52,12 +68,20 @@ const EmailList = () => {
       </div>
       <div className="emailList__sections">
         <Section Icon={Inbox} title="Principal" color="red" selected />
-        <Section Icon={People} title="Social" color="#1A73E8"/>
-        <Section Icon={LocalOffer} title="Promociones" color="green"/>
+        <Section Icon={People} title="Social" color="#1A73E8" />
+        <Section Icon={LocalOffer} title="Promociones" color="green" />
       </div>
       <div className="emailList__list">
-       <EmailRow title="La mejor Clone Web" subject="Hecho por Nico" description="Lorem ipsum" time="10pm" />
-       <EmailRow title="Google Interview" subject="Trabaja con nosotros" description="Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum" time="9am" />
+        {emails.map(({ id, data: { to, subject, message, timestamp } }) => (
+          <EmailRow
+            id={id}
+            key={id}
+            title={to}
+            subject={subject}
+            description={message}
+            time={new Date(timestamp?.seconds * 1000).toUTCString()}
+          />
+        ))}
       </div>
     </div>
   );
