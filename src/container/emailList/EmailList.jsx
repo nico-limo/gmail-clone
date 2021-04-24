@@ -19,7 +19,6 @@ import {
 import Section from "../../components/section/Section";
 import EmailRow from "../../components/emailRow/EmailRow";
 import { db } from "../../fbConfig";
-import { set } from "react-hook-form";
 
 const EmailList = () => {
   const [emails, setEmails] = useState([]);
